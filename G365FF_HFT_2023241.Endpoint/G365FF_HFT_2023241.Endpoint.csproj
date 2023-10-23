@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{25B7893B-718F-4BC6-A1EA-8482EE499C5E}</ProjectGuid>
+    <ProjectGuid>{6089C7AD-D9F8-48F0-96F8-E651ED0AB665}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>G365FF_HFT_2023241.Endpoint</RootNamespace>
     <AssemblyName>G365FF_HFT_2023241.Endpoint</AssemblyName>
