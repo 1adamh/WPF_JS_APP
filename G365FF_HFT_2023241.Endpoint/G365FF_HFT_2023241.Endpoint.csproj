@@ -35,5 +35,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\G365FF_HFT_2023241.Logic\G365FF_HFT_2023241.Logic.csproj">
+      <Project>{d24d93a7-a08d-4073-9961-296ea078cf4f}</Project>
+      <Name>G365FF_HFT_2023241.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\G365FF_HFT_2023241.Models\G365FF_HFT_2023241.Models.csproj">
+      <Project>{8bd8e1cd-ae01-4cb7-9af3-0ec927aca1b4}</Project>
+      <Name>G365FF_HFT_2023241.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\G365FF_HFT_2023241.Repository\G365FF_HFT_2023241.Repository.csproj">
+      <Project>{80d97946-4ca9-4aea-b1c3-6a1e855d5d9c}</Project>
+      <Name>G365FF_HFT_2023241.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
