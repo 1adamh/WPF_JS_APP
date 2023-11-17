@@ -8,18 +8,22 @@ using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Models
 {
-    public class Tanar
+    public class Ut
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TanarId { get; set; }
+        public int Id { get; set; }
 
-        [StringLength(100)]
-        public string TanarNev {  get; set; }
+        public int Ar { get; set; }
 
-        //public int KurzusId { get; set; } //idegen
+        public int Tavolsag { get; set; }
+
+        public int TaxiId {  get; set; }
+        [NotMapped]
+        public virtual Taxi Taxi { get; set; }
 
         [NotMapped]
-        public virtual List<Kurzus> Kurzusok { get; set;}
+        public virtual List<Utas> Utasok { get; set; }
+
     }
 }

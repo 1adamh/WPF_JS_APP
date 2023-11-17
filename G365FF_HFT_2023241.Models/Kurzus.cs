@@ -12,6 +12,7 @@ namespace G365FF_HFT_2023241.Models
     public class Kurzus
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int KurzusId { get; set; }
 
         [StringLength(100)]
@@ -24,6 +25,9 @@ namespace G365FF_HFT_2023241.Models
         [NotMapped]
         public virtual Tanar Tanar { get; set; }
 
-        
+        [NotMapped]
+        public virtual List<Hallgato> Hallgatok { get; set; }
+
+
     }
 }
