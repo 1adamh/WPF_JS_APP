@@ -1,4 +1,6 @@
-﻿using System;
+﻿using G365FF_HFT_2023241.Repository;
+using System;
+using System.Linq;
 
 namespace G365FF_HFT_2023241.Client
 {
@@ -6,7 +8,12 @@ namespace G365FF_HFT_2023241.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            TaxiDbContext db = new TaxiDbContext();
+            var taxis= db.Taxis.ToArray();
+            var utasok= db.Utasok.ToArray();
+            var utak= db.Utak.ToArray();
+
+            
         }
     }
 }

@@ -12,7 +12,7 @@ namespace G365FF_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int TId { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }
