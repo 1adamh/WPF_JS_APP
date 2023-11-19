@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Models
 {
-    public class Utas
+    public class Passenger
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int PID { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }
 
-        public int UtiD {  get; set; }
+        public int RideID {  get; set; }
 
         [NotMapped]
-        public virtual Ut Ut { get; set; }
+        public virtual Ride Ride { get; set; }
     }
 }

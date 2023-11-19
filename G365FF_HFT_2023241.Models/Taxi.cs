@@ -12,14 +12,14 @@ namespace G365FF_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int TId { get; set; }
+        public int TID { get; set; }
 
         [StringLength(100)]
         public string Name { get; set; }
 
-        public int UtiD { get; set; }
+        public int RideID { get; set; }
         
         [NotMapped] 
-        public virtual List<Ut> Utak { get; set; }
+        public virtual List<Ride> Rides { get; set; }
     }
 }
