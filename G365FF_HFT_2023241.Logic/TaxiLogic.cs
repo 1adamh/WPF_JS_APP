@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using G365FF_HFT_2023241.Models;
 using G365FF_HFT_2023241.Repository;
+using G365FF_HFT_2023241.Repository.Class;
 using G365FF_HFT_2023241.Repository.Interface;
 
 namespace G365FF_HFT_2023241.Logic
@@ -9,14 +12,14 @@ namespace G365FF_HFT_2023241.Logic
     public class TaxiLogic 
     {
 
-        IRepository<Ride> repo;
+        IRepository<Taxi> repo;
 
-        public TaxiLogic(IRepository<Ride> repo)
+        public TaxiLogic(IRepository<Taxi> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Ride item)
+        public void Create(Taxi item)
         {
            
             this.repo.Create(item);
@@ -27,21 +30,23 @@ namespace G365FF_HFT_2023241.Logic
             this.repo.Delete(id);
         }
 
-        public Ride Read(int id)
+        public Taxi Read(int id)
         {
             return this.repo.Read(id);
         }
 
-        public IQueryable<Ride> ReadAll()
+        public IQueryable<Taxi> ReadAll()
         {
             return this.repo.ReadAll();
         }
 
-        public void Update(Ride item)
+        public void Update(Taxi item)
         {
             this.repo.Update(item);
         }
 
+        
+       
 
     }
 }
