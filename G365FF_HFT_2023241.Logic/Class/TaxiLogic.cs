@@ -41,6 +41,14 @@ namespace G365FF_HFT_2023241.Logic.Class
             return repo.ReadAll();
         }
 
+        public int? TaxiCount(Taxi item)
+        {
+            return this.repo
+                .ReadAll()
+                .Count();
+
+        }
+
         public void Update(Taxi item)
         {
             repo.Update(item);
