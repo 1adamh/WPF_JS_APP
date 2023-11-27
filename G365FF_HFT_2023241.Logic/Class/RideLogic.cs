@@ -1,4 +1,5 @@
-﻿using G365FF_HFT_2023241.Models;
+﻿using G365FF_HFT_2023241.Logic.Interface;
+using G365FF_HFT_2023241.Models;
 using G365FF_HFT_2023241.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace G365FF_HFT_2023241.Logic
+namespace G365FF_HFT_2023241.Logic.Class
 {
-    public class RideLogic:IRideLogic
+    public class RideLogic : IRideLogic
     {
         IRepository<Ride> repo;
 
@@ -20,27 +21,27 @@ namespace G365FF_HFT_2023241.Logic
         public void Create(Ride item)
         {
 
-            this.repo.Create(item);
+            repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            this.repo.Delete(id);
+            repo.Delete(id);
         }
 
         public Ride Read(int id)
         {
-            return this.repo.Read(id);
+            return repo.Read(id);
         }
 
         public IQueryable<Ride> ReadAll()
         {
-            return this.repo.ReadAll();
+            return repo.ReadAll();
         }
 
         public void Update(Ride item)
         {
-            this.repo.Update(item);
+            repo.Update(item);
         }
     }
 }

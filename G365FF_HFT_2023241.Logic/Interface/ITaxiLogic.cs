@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace G365FF_HFT_2023241.Logic
+namespace G365FF_HFT_2023241.Logic.Interface
 {
-    internal interface IRideLogic
+    internal interface ITaxiLogic
     {
-        void Create(Ride item);
+        void Create(Taxi item);
         void Delete(int id);
-        Ride Read(int id);
-        IQueryable<Ride> ReadAll();
-        void Update(Ride item);
+        Taxi Read(int id);
+        IQueryable<Taxi> ReadAll();
+        void Update(Taxi item);
     }
 }
