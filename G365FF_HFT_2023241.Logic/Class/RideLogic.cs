@@ -107,13 +107,17 @@ namespace G365FF_HFT_2023241.Logic.Class
         }
 
         //non-curd 4 
-        //public IEnumerable<Ride> AvgCostByPassenger()
-        //{
-        //    return repo.ReadAll()
-        //        .Select(t=> t.RID)
-        //        .Where
+        public IEnumerable AvgDriverByRide()
+        {
+            var a = trepo.ReadAll().Count() / trepo.ReadAll().Count();
+            var list = new List<double>();
+            list.Add(a);
 
-        //}
+            return list;
+
+        }
+
+        
 
     }
 }

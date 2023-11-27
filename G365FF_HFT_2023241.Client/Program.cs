@@ -23,13 +23,26 @@ namespace G365FF_HFT_2023241.Client
             
             RideLogic rideLogic = new RideLogic(rideRepo,taxiRepo, passengerRepo);
 
+
+            var q1 = rideLogic.AvgDistanceByDriver();
+            foreach (var item in q1)
+            {
+                Console.WriteLine(item);
+            }
+
             var q2 = rideLogic.AvgDistanceByPassenger();
             foreach (var item in q2)
             {
                 Console.WriteLine( item);
             }
 
-            
+            var q3 = rideLogic.AvgCostByPassenger();
+            foreach (var item in q3)
+            {
+                Console.WriteLine(item);
+            }
+
+
 
 
 
