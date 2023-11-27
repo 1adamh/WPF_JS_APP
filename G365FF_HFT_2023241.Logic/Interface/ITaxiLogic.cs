@@ -15,5 +15,6 @@ namespace G365FF_HFT_2023241.Logic.Interface
         Taxi Read(int id);
         IQueryable<Taxi> ReadAll();
         void Update(Taxi item);
+        int? TaxiCount(Taxi item);
     }
 }

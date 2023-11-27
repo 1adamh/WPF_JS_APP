@@ -15,5 +15,7 @@ namespace G365FF_HFT_2023241.Logic.Interface
         Ride Read(int id);
         IQueryable<Ride> ReadAll();
         void Update(Ride item);
+        int? DistanceCount(Ride item);
+        int? CostCount(Ride item);
     }
 }
