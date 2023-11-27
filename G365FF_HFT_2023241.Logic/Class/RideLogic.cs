@@ -1,7 +1,9 @@
 ﻿using G365FF_HFT_2023241.Logic.Interface;
 using G365FF_HFT_2023241.Models;
+using G365FF_HFT_2023241.Repository.Class;
 using G365FF_HFT_2023241.Repository.Interface;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +14,19 @@ namespace G365FF_HFT_2023241.Logic.Class
     public class RideLogic : IRideLogic
     {
         IRepository<Ride> repo;
+        IRepository<Taxi> trepo;
+        IRepository<Passenger> prepo;
 
-        public RideLogic(IRepository<Ride> repo)
+        
+
+        public RideLogic(IRepository<Ride> repo, IRepository<Taxi> trepo, IRepository<Passenger> prepo )
         {
             this.repo = repo;
+            this.trepo= trepo;
+            this.prepo = prepo;
         }
 
-        public int? CostCount(Ride item)
+        public double CostCount(Ride item)
         {
             return this.repo
                 .ReadAll()
@@ -37,7 +45,7 @@ namespace G365FF_HFT_2023241.Logic.Class
             repo.Delete(id);
         }
 
-        public int? DistanceCount(Ride item)
+        public double DistanceCount(Ride item)
         {
             return this.repo
                 .ReadAll()
@@ -59,5 +67,53 @@ namespace G365FF_HFT_2023241.Logic.Class
         {
             repo.Update(item);
         }
+
+        // non-crud 1
+        public IEnumerable AvgDistanceByDriver()
+        {
+             
+
+            var a = (double)repo.ReadAll().Sum(t => t.Distance) / trepo.ReadAll().Count();
+            var list = new List<double>();
+            list.Add(a);
+
+            return list;
+        }
+
+
+        // non-crud 2
+        public IEnumerable AvgDistanceByPassenger()
+        {
+            var a= (double)repo.ReadAll().Sum(t => t.Distance)/ prepo.ReadAll().Count();
+            var list = new List<double>();
+            list.Add(a);
+          
+            return list;
+
+
+        }
+
+        // non-crud 3
+        public IEnumerable AvgCostByPassenger()
+        {
+            
+            var a = (double)repo.ReadAll().Sum(t => t.Cost) / prepo.ReadAll().Count();
+            var list = new List<double>();
+            list.Add(a);
+
+            return list;
+
+
+        }
+
+        //non-curd 4 
+        //public IEnumerable<Ride> AvgCostByPassenger()
+        //{
+        //    return repo.ReadAll()
+        //        .Select(t=> t.RID)
+        //        .Where
+
+        //}
+
     }
 }
