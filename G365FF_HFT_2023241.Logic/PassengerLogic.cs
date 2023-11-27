@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Logic
 {
-    public class PassengerLogic
+    public class PassengerLogic: IPassengerLogic
     {
         IRepository<Passenger> repo;
 

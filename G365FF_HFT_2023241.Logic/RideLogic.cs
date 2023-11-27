@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Logic
 {
-    public class RideLogic
+    public class RideLogic:IRideLogic
     {
         IRepository<Ride> repo;
 
