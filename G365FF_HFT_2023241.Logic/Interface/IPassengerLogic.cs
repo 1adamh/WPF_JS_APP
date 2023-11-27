@@ -15,5 +15,7 @@ namespace G365FF_HFT_2023241.Logic.Interface
         Passenger Read(int id);
         IQueryable<Passenger> ReadAll();
         void Update(Passenger item);
+        int? PassCount(Passenger item);
+        
     }
 }

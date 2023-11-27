@@ -21,5 +21,7 @@ namespace G365FF_HFT_2023241.Models
 
         [NotMapped]
         public virtual Ride Ride { get; set; }
+
+        
     }
 }
