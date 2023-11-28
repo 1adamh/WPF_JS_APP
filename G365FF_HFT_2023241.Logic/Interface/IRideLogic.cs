@@ -1,5 +1,6 @@
 ﻿using G365FF_HFT_2023241.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace G365FF_HFT_2023241.Logic.Interface
         Ride Read(int id);
         IQueryable<Ride> ReadAll();
         void Update(Ride item);
-        double DistanceCount(Ride item);
-        double CostCount(Ride item);
+        IEnumerable AvgDistanceByDriver();
+        IEnumerable AvgDistanceByPassenger();
+        IEnumerable AvgCostByPassenger();
+        IEnumerable AvgDriverRide();
+        IEnumerable<int> LongestDistanceDriver();
     }
 }
