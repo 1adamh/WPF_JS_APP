@@ -47,13 +47,7 @@ namespace G365FF_HFT_2023241.Logic.Class
         {
             prepo.Update(item);
         }
-        public int? PassCount(Passenger item)
-        {
-            return this.prepo
-                .ReadAll()
-                .Count();
-                
-        }
+        
         //non-crud 6
         public IEnumerable AvgPassByDriver()
         {
