@@ -88,7 +88,7 @@ namespace G365FF_HFT_2023241.Test
 
             rideLogic= new RideLogic(mockRideRepo.Object,mockTaxiRepo.Object,mockPassengerRepo.Object);
             taxiLogic = new TaxiLogic(mockTaxiRepo.Object);
-            passengerLogic = new PassengerLogic(mockPassengerRepo.Object,mockTaxiRepo.Object);
+            passengerLogic = new PassengerLogic(mockPassengerRepo.Object,mockTaxiRepo.Object); 
             
         }
 
