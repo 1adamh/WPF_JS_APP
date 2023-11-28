@@ -42,6 +42,16 @@ namespace G365FF_HFT_2023241.Client
                 Console.WriteLine(item);
             }
 
+            var q4 = rideLogic.AvgDistanceByDriver();
+            foreach (var item in q4)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            var q5 = rideLogic.LongestDistanceDriver();
+            Console.WriteLine(q5);
+
 
 
 
