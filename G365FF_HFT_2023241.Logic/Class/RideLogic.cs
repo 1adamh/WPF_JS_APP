@@ -35,13 +35,7 @@ namespace G365FF_HFT_2023241.Logic.Class
 
 
 
-        public double CostCount(Ride item)
-        {
-            return this.repo
-                .ReadAll()
-                .Select(x => x.Cost)
-                .Count();
-        }
+        
 
         public void Create(Ride item)
         {
@@ -54,13 +48,7 @@ namespace G365FF_HFT_2023241.Logic.Class
             repo.Delete(id);
         }
 
-        public double DistanceCount(Ride item)
-        {
-            return this.repo
-                .ReadAll()
-                .Select(x => x.Distance)
-                .Count();
-        }
+        
 
         public Ride Read(int id)
         {
