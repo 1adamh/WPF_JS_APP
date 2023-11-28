@@ -3,6 +3,7 @@ using G365FF_HFT_2023241.Models;
 using G365FF_HFT_2023241.Repository.Class;
 using G365FF_HFT_2023241.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,11 +25,15 @@ namespace G365FF_HFT_2023241.Logic.Class
         public RideLogic(IRepository<Ride> repo, IRepository<Taxi> trepo, IRepository<Passenger> prepo)
         {
             this.repo = repo;
+            
+        }
+        public RideLogic(Repository<Taxi> trepo, IRepository<Passenger> prepo)
+        {
             this.trepo = trepo;
             this.prepo = prepo;
         }
 
-        
+
 
         public double CostCount(Ride item)
         {
@@ -131,15 +136,7 @@ namespace G365FF_HFT_2023241.Logic.Class
             return driver ;
         }
 
-        //non-crud 6
-        public IEnumerable AvgPassByDriver()
-        {
-            var a = prepo.ReadAll().Count() / trepo.ReadAll().Count();
-            var list = new List<double>();
-            list.Add(a);
-
-            return list;
-        }
+        
 
 
 
