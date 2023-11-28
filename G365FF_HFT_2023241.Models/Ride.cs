@@ -10,6 +10,8 @@ namespace G365FF_HFT_2023241.Models
 {
     public class Ride
     {
+      
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RID { get; set; }
@@ -24,6 +26,6 @@ namespace G365FF_HFT_2023241.Models
 
         [NotMapped]
         public virtual List<Passenger> Passengers { get; set; }
-
+        
     }
 }

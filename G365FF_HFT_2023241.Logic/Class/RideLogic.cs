@@ -2,9 +2,11 @@
 using G365FF_HFT_2023241.Models;
 using G365FF_HFT_2023241.Repository.Class;
 using G365FF_HFT_2023241.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +19,16 @@ namespace G365FF_HFT_2023241.Logic.Class
         IRepository<Taxi> trepo;
         IRepository<Passenger> prepo;
 
-        
+        public IRepository<Ride> Object { get; }
 
-        public RideLogic(IRepository<Ride> repo, IRepository<Taxi> trepo, IRepository<Passenger> prepo )
+        public RideLogic(IRepository<Ride> repo, IRepository<Taxi> trepo, IRepository<Passenger> prepo)
         {
             this.repo = repo;
-            this.trepo= trepo;
+            this.trepo = trepo;
             this.prepo = prepo;
         }
+
+        
 
         public double CostCount(Ride item)
         {
@@ -71,7 +75,7 @@ namespace G365FF_HFT_2023241.Logic.Class
         // non-crud 1
         public IEnumerable AvgDistanceByDriver()
         {
-             
+
 
             var a = (double)repo.ReadAll().Sum(t => t.Distance) / trepo.ReadAll().Count();
             var list = new List<double>();
@@ -84,10 +88,10 @@ namespace G365FF_HFT_2023241.Logic.Class
         // non-crud 2
         public IEnumerable AvgDistanceByPassenger()
         {
-            var a= (double)repo.ReadAll().Sum(t => t.Distance)/ prepo.ReadAll().Count();
+            var a = (double)repo.ReadAll().Sum(t => t.Distance) / prepo.ReadAll().Count();
             var list = new List<double>();
             list.Add(a);
-          
+
             return list;
 
 
@@ -96,7 +100,7 @@ namespace G365FF_HFT_2023241.Logic.Class
         // non-crud 3
         public IEnumerable AvgCostByPassenger()
         {
-            
+
             var a = (double)repo.ReadAll().Sum(t => t.Cost) / prepo.ReadAll().Count();
             var list = new List<double>();
             list.Add(a);
@@ -107,9 +111,9 @@ namespace G365FF_HFT_2023241.Logic.Class
         }
 
         //non-curd 4 
-        public IEnumerable AvgDriverByRide()
+        public IEnumerable AvgDriverRide()
         {
-            var a = trepo.ReadAll().Count() / trepo.ReadAll().Count();
+            var a = repo.ReadAll().Count() / trepo.ReadAll().Count();
             var list = new List<double>();
             list.Add(a);
 
@@ -117,7 +121,28 @@ namespace G365FF_HFT_2023241.Logic.Class
 
         }
 
-        
+        //non-crud 5 
+        public IEnumerable<int> LongestDistanceDriver()
+        {
+            var maxkm = repo.ReadAll().Select(t => t.Distance).Max();
+            var maxid = repo.ReadAll().Where(t => t.Distance == maxkm).Select(t => t.TaxiId);
+            var driver= trepo.ReadAll().Where(t=>t.TID.Equals(maxid)).Select(t=>t.TID);
+            
+            return driver ;
+        }
+
+        //non-crud 6
+        public IEnumerable AvgPassByDriver()
+        {
+            var a = prepo.ReadAll().Count() / trepo.ReadAll().Count();
+            var list = new List<double>();
+            list.Add(a);
+
+            return list;
+        }
+
+
+
 
     }
 }
