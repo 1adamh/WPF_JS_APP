@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Logic.Interface
 {
-    internal interface IRideLogic
+    public interface IRideLogic
     {
         void Create(Ride item);
         void Delete(int id);

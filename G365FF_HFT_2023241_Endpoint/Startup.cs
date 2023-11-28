@@ -1,3 +1,8 @@
+using G365FF_HFT_2023241.Logic.Class;
+using G365FF_HFT_2023241.Logic.Interface;
+using G365FF_HFT_2023241.Models;
+using G365FF_HFT_2023241.Repository.Class;
+using G365FF_HFT_2023241.Repository.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +31,15 @@ namespace G365FF_HFT_2023241_Endpoint
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddSingleton<IRepository<Ride>, RideRepo>();
+            services.AddSingleton<IRepository<Taxi>, TaxiRepo>();
+            services.AddSingleton<IRepository<Passenger>, PassengerRepo>();
+
+
+            services.AddTransient<IRideLogic,RideLogic>();
+            services.AddSingleton<ITaxiLogic, TaxiLogic>();
+            services.AddSingleton<IPassengerLogic, PassengerLogic>();
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

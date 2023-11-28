@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Logic.Interface
 {
-    internal interface ITaxiLogic
+    public interface ITaxiLogic
     {
         void Create(Taxi item);
         void Delete(int id);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Logic.Interface
 {
-    internal interface IPassengerLogic
+    public interface IPassengerLogic
     {
         void Create(Passenger item);
         void Delete(int id);
