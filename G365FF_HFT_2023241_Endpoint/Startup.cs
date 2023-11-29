@@ -2,6 +2,7 @@ using G365FF_HFT_2023241.Logic.Class;
 using G365FF_HFT_2023241.Logic.Interface;
 using G365FF_HFT_2023241.Models;
 using G365FF_HFT_2023241.Repository.Class;
+using G365FF_HFT_2023241.Repository.Data;
 using G365FF_HFT_2023241.Repository.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,16 +31,17 @@ namespace G365FF_HFT_2023241_Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<TaxiDbContext>();
 
-            services.AddSingleton<IRepository<Ride>, RideRepo>();
-            services.AddSingleton<IRepository<Taxi>, TaxiRepo>();
-            services.AddSingleton<IRepository<Passenger>, PassengerRepo>();
+            services.AddTransient<IRepository<Ride>, RideRepo>();
+            services.AddTransient<IRepository<Taxi>, TaxiRepo>();
+            services.AddTransient<IRepository<Passenger>, PassengerRepo>();
 
 
             services.AddTransient<IRideLogic,RideLogic>();
-            services.AddSingleton<ITaxiLogic, TaxiLogic>();
-            services.AddSingleton<IPassengerLogic, PassengerLogic>();
-            
+            services.AddTransient<ITaxiLogic, TaxiLogic>();
+            services.AddTransient<IPassengerLogic, PassengerLogic>();
+                
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
