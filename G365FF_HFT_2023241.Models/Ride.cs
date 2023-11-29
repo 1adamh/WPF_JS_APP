@@ -22,6 +22,7 @@ namespace G365FF_HFT_2023241.Models
 
         public int TaxiId {  get; set; }
         [NotMapped]
+
         public virtual Taxi Taxi { get; set; }
 
         [NotMapped]
