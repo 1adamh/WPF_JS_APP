@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace G365FF_HFT_2023241.Models
@@ -20,6 +21,7 @@ namespace G365FF_HFT_2023241.Models
         public int RideID {  get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual Ride Ride { get; set; }
 
         
