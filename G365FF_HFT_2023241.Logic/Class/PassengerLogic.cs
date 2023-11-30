@@ -55,7 +55,7 @@ namespace G365FF_HFT_2023241.Logic.Class
             prepo.Update(item);
         }
         
-        //non-crud 6
+        //non-crud 5
         public IEnumerable AvgPassByDriver()
         {
             var a = prepo.ReadAll().Count() / trepo.ReadAll().Count();

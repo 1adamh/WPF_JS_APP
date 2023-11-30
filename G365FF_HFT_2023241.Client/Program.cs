@@ -30,7 +30,7 @@ namespace G365FF_HFT_2023241.Client
             }
             else if (entity == "Ride")
             {
-                Console.Write("Enter taxi Name: ");
+                Console.Write("Enter ride Name: ");
                 int distance = int.Parse(Console.ReadLine());
                 rest.Post(new Ride() { Distance = distance }, "taxi");
             }
@@ -96,7 +96,7 @@ namespace G365FF_HFT_2023241.Client
                 Console.WriteLine($"New name [old: {one.Distance}]: ");
                 int distance = int.Parse(Console.ReadLine());
                 one.Distance = distance;
-                rest.Put(one, "taxi");
+                rest.Put(one, "ride");
             }
         }
 
