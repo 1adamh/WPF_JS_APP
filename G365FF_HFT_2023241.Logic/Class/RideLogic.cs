@@ -119,15 +119,7 @@ namespace G365FF_HFT_2023241.Logic.Class
 
         }
 
-        //non-crud 5 
-        public IEnumerable<int> LongestDistanceDriver()
-        {
-            var maxkm = repo.ReadAll().Select(t => t.Distance).Max();
-            var maxid = repo.ReadAll().Where(t => t.Distance == maxkm).Select(t => t.TaxiId);
-            var driver= trepo.ReadAll().Where(t=>t.TID.Equals(maxid)).Select(t=>t.TID);
-            
-            return driver ;
-        }
+        
 
         
 

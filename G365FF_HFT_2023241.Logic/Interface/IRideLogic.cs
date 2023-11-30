@@ -20,6 +20,6 @@ namespace G365FF_HFT_2023241.Logic.Interface
         IEnumerable AvgDistanceByPassenger();
         IEnumerable AvgCostByPassenger();
         IEnumerable AvgDriverRide();
-        IEnumerable<int> LongestDistanceDriver();
+        
     }
 }
