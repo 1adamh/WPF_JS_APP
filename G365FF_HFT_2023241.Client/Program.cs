@@ -2,7 +2,7 @@
 
 using ConsoleTools;
 using G365FF_HFT_2023241.Models;
-using MovieDbApp.Client;
+using G365FF_HFT_2023241.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
