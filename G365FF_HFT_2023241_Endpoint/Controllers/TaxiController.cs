@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace G365FF_HFT_2023241_Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TaxiController : ControllerBase
     {
