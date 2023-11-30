@@ -7,21 +7,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace G365FF_HFT_2023241.Client
 {
     internal class Program
     {
         static RestService rest;
-        
+
         static void Create(string entity)
         {
-            if (entity== "Taxi")
+            if (entity == "Taxi")
             {
                 Console.Write("Enter taxi Name: ");
                 string name = Console.ReadLine();
                 rest.Post(new Taxi() { Name = name }, "taxi");
             }
-            
+            else if (entity == "Passenger")
+            {
+                Console.Write("Enter passenger Name: ");
+                string name = Console.ReadLine();
+                rest.Post(new Passenger() { Name = name }, "passenger");
+            }
+            else if (entity == "Ride")
+            {
+                Console.Write("Enter taxi Name: ");
+                int distance = int.Parse(Console.ReadLine());
+                rest.Post(new Ride() { Distance = distance }, "taxi");
+            }
+
 
         }
         static void List(string entity)
@@ -29,28 +42,65 @@ namespace G365FF_HFT_2023241.Client
             if (entity == "Taxi")
             {
                 List<Taxi> taxis = rest.Get<Taxi>("taxi");
-                foreach (var item in taxis) {
-                    Console.WriteLine( item.TID+ ": "+ item.Name);
+                foreach (var item in taxis)
+                {
+                    Console.WriteLine(item.TID + ": " + item.Name);
                 }
 
+            }
+            else if (entity == "Passenger")
+            {
+                List<Passenger> passengers = rest.Get<Passenger>("passenger");
+                foreach (var item in passengers)
+                {
+                    Console.WriteLine(item.PID + ": " + item.Name);
+                }
+            }
+            else if (entity == "Ride")
+            {
+                List<Ride> rides = rest.Get<Ride>("ride");
+                foreach (var item in rides)
+                {
+                    Console.WriteLine(item.RID + ": " + item.Distance);
+                }
             }
             Console.ReadLine();
         }
         static void Update(string entity)
         {
-            if (entity=="Taxi")
+            if (entity == "Taxi")
             {
-                Console.WriteLine("Enter Taxi's id to update" );
-                int id= int.Parse(Console.ReadLine());
+                Console.WriteLine("Enter Taxi's id to update");
+                int id = int.Parse(Console.ReadLine());
                 Taxi one = rest.Get<Taxi>(id, "taxi");
                 Console.WriteLine($"New name [old: {one.Name}]: ");
                 string name = Console.ReadLine();
-                one.Name=name;
+                one.Name = name;
+                rest.Put(one, "taxi");
+            }
+            else if (entity == "Passenger")
+            {
+                Console.WriteLine("Enter Passengers's id to update");
+                int id = int.Parse(Console.ReadLine());
+                Passenger one = rest.Get<Passenger>(id, "passenger");
+                Console.WriteLine($"New name [old: {one.Name}]: ");
+                string name = Console.ReadLine();
+                one.Name = name;
+                rest.Put(one, "Passenger");
+            }
+            else if (entity == "Ride")
+            {
+                Console.WriteLine("Enter Ride's id to update");
+                int id = int.Parse(Console.ReadLine());
+                Ride one = rest.Get<Ride>(id, "ride");
+                Console.WriteLine($"New name [old: {one.Distance}]: ");
+                int distance = int.Parse(Console.ReadLine());
+                one.Distance = distance;
                 rest.Put(one, "taxi");
             }
         }
 
-        static void Delete(string entity) 
+        static void Delete(string entity)
         {
             if (entity == "Taxi")
             {
@@ -58,15 +108,87 @@ namespace G365FF_HFT_2023241.Client
                 int id = int.Parse(Console.ReadLine());
                 rest.Delete(id, "taxi");
             }
+            else if (entity == "Passenger")
+            {
+                Console.Write("Enter Passenger's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "passenger");
+            }
+            else if (entity == "Ride")
+            {
+                Console.Write("Enter Ride's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "ride");
+            }
         }
+
+
+        static void AvgDistanceByDriver()
+        {
+            List<object> list = rest.Get<object>("RideStat/AvgDistanceByDriver");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
+        }
+
+
+
+        static void AvgDistanceByPassenger()
+        {
+            List<object> list = rest.Get<object>("RideStat/AvgDistanceByPassenger");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
+        }
+
+        static void AvgCostByPassenger()
+        {
+            List<object> list = rest.Get<object>("RideStat/AvgCostByPassenger");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
+        }
+        
+
+        static void AvgDriverRide()
+        {
+            List<object> list = rest.Get<object>("RideStat/AvgDriverRide");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
+        }
+        
+        static void AvgPassByDriver()
+        {
+            List<object> list = rest.Get<object>("PassengerStat/AvgPassByDriver");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            Console.ReadKey();
+        }
+
+
+
         static void Main(string[] args)
         {
+
+
             rest = new RestService("http://localhost:12932/", "ride");
             var passengerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Passenger"))
                 .Add("Create", () => Create("Passenger"))
                 .Add("Delete", () => Delete("Passenger"))
                 .Add("Update", () => Update("Passenger"))
+                .Add("AvgPassByDriver", () => AvgPassByDriver())
                 .Add("Exit", ConsoleMenu.Close);
 
             var rideSubMenu = new ConsoleMenu(args, level: 1)
@@ -74,6 +196,10 @@ namespace G365FF_HFT_2023241.Client
                 .Add("Create", () => Create("Ride"))
                 .Add("Delete", () => Delete("Ride"))
                 .Add("Update", () => Update("Ride"))
+                .Add("AvgDistanceByDriver", () => AvgDistanceByDriver())
+                .Add("AvgDistanceByPassenger", () => AvgDistanceByPassenger())
+                .Add("AvgCostByPassenger", () => AvgCostByPassenger())
+                .Add("AvgDriverRide", () => AvgDriverRide())
                 .Add("Exit", ConsoleMenu.Close);
 
             var taxiSubMenu = new ConsoleMenu(args, level: 1)
@@ -86,7 +212,7 @@ namespace G365FF_HFT_2023241.Client
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Passengers", () => passengerSubMenu.Show())
                 .Add("Rides", () => rideSubMenu.Show())
-                .Add("Taxis", () => taxiSubMenu.Show())                
+                .Add("Taxis", () => taxiSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();

@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace G365FF_HFT_2023241_Endpoint.Controllers
 {
-    [Route("[controller] /[action]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class RideStatController : ControllerBase
     {
