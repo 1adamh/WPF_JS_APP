@@ -13,6 +13,39 @@ namespace G365FF_HFT_2023241.Client
     internal class Program
     {
         static RestService rest;
+        static void Read(string entity)
+        {
+            if (entity == "Taxi")
+            {
+                Console.Write("Enter taxi id: ");
+                int id = int.Parse(Console.ReadLine());
+                Taxi t = rest.Get<Taxi>(id, "taxi");
+                Console.WriteLine($"{t.TID} {t.Name} {t.RideID}");
+            }
+            else
+            {
+                if (entity == "Ride")
+                {
+                    Console.Write("Enter ride id: ");
+                    int id = int.Parse(Console.ReadLine());
+                    Ride t = rest.Get<Ride>(id, "ride");
+                    Console.WriteLine($"{t.RID} {t.Distance} {t.TaxiId} {t.Cost}");
+                }
+                else
+                {
+                    if (entity == "Passenger")
+                    {
+
+                        Console.Write("Enter passenger id: ");
+                        int id = int.Parse(Console.ReadLine());
+                        Passenger t = rest.Get<Passenger>(id, "passenger");
+                        Console.WriteLine($"{t.PID} {t.Name} {t.RideID}");
+                    }
+                }
+            }
+            Console.ReadKey();
+
+        }
 
         static void Create(string entity)
         {
@@ -185,6 +218,7 @@ namespace G365FF_HFT_2023241.Client
             rest = new RestService("http://localhost:12932/", "ride");
             var passengerSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Passenger"))
+                .Add("Read", () => Read("Passenger"))
                 .Add("Create", () => Create("Passenger"))
                 .Add("Delete", () => Delete("Passenger"))
                 .Add("Update", () => Update("Passenger"))
@@ -193,6 +227,7 @@ namespace G365FF_HFT_2023241.Client
 
             var rideSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Ride"))
+                .Add("Read", () => Read("Ride"))
                 .Add("Create", () => Create("Ride"))
                 .Add("Delete", () => Delete("Ride"))
                 .Add("Update", () => Update("Ride"))
@@ -204,6 +239,7 @@ namespace G365FF_HFT_2023241.Client
 
             var taxiSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Taxi"))
+                .Add("Read", () => Read("Taxi"))
                 .Add("Create", () => Create("Taxi"))
                 .Add("Delete", () => Delete("Taxi"))
                 .Add("Update", () => Update("Taxi"))
