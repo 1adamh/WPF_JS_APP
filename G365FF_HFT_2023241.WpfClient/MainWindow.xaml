@@ -3,10 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:G365FF_HFT_2023241.WpfClient"
+        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Főoldal" Height="150" Width="800">
+   
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label Content="Passenger oldal" Background="LightBlue" Padding="10" HorizontalContentAlignment="Center"/>
+            
+            <Button Content="Tovább a passenger oldalra"  Margin="10" Padding="10" Click="Button_Click" />
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label Content="Ride oldal" Background="LightBlue" Padding="10" HorizontalContentAlignment="Center"/>
+
+            <Button Content="Tovább a ride oldalra"  Margin="10" Padding="10" Click="Button_Click_1" />
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label Content="Taxi oldal" Background="LightBlue" Padding="10" HorizontalContentAlignment="Center"/>
+
+            <Button Content="Tovább a taxi oldalra"  Margin="10" Padding="10" Click="Button_Click_2" />
+        </StackPanel>
 
     </Grid>
 </Window>

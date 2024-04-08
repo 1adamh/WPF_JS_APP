@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MovieDbApp.WpfClient
+namespace G365FF_HFT_2023241.WpfClient
 {
     public class RestService
     {
