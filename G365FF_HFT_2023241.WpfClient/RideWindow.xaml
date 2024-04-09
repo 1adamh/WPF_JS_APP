@@ -13,7 +13,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+
         <ListBox ItemsSource="{Binding Rides}" SelectedItem="{Binding SelectedRide}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -23,11 +25,65 @@
         </ListBox>
         <StackPanel Grid.Column="1">
             <Label Content="Name" Background="LightBlue" Padding="10" HorizontalContentAlignment="Center" />
-            <TextBox Text="{Binding SelectedRide.RID}" Padding="10" Margin="0,0,0,30" />
+            <TextBox Text="{Binding SelectedRide.Distance}" Padding="10" Margin="0,0,0,30" />
             <Button Content="Create Ride" Command="{Binding CreateRideCommand}" Margin="10" Padding="10" />
             <Button Content="Delete Ride" Command="{Binding DeleteRideCommand}" Margin="10" Padding="10" />
             <Button Content="Update Ride" Command="{Binding UpdateRideCommand}" Margin="10" Padding="10" />
+            <Button Content="Avgkm/driver" Command="{Binding AvgDistanceByDriverCommand}" Margin="10" Padding="10" />
+            <Button Content="Avgkm/passenger" Command="{Binding AvgDistanceByPassengerCommand}" Margin="10" Padding="10" />
+            <Button Content="Avgcost/passenger" Command="{Binding AvgCostByPassengerCommand}" Margin="10" Padding="10" />
+            <Button Content="Ride/driver" Command="{Binding AvgDriverRideCommand}" Margin="10" Padding="10" />
+
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
+        </StackPanel >
+        <StackPanel Grid.Column="2">
+            <Grid Height="416">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <ListBox Grid.Row="0" ItemsSource="{Binding AverageDrivers}" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding eredmeny1 }"/>
+
+                        </DataTemplate >
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+                <ListBox Grid.Row="1" ItemsSource="{Binding AverageDistancePassenger}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding eredmeny2 }"/>
+
+                        </DataTemplate >
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+                <ListBox Grid.Row="2" ItemsSource="{Binding AverageCostPassenger}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding eredmeny3 }"/>
+
+                        </DataTemplate >
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <ListBox Grid.Row="3" ItemsSource="{Binding AverageDriverRide}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding eredmeny4 }"/>
+
+                        </DataTemplate >
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

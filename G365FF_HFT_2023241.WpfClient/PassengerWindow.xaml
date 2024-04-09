@@ -13,6 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <ListBox ItemsSource="{Binding Passengers}" SelectedItem="{Binding SelectedPassenger}">
             <ListBox.ItemTemplate>
@@ -27,7 +28,18 @@
             <Button Content="Create Passenger" Command="{Binding CreatePassengerCommand}" Margin="10" Padding="10" />
             <Button Content="Delete Passenger" Command="{Binding DeletePassengerCommand}" Margin="10" Padding="10" />
             <Button Content="Update Passenger" Command="{Binding UpdatePassengerCommand}" Margin="10" Padding="10" />
+            <Button Content="Passenger/driver" Command="{Binding AvgPassByDriverCommand}" Margin="10" Padding="10" />
             <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <ListBox ItemsSource="{Binding AvgPassByDrivers}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding eredmeny5 }"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                
+            </ListBox>
         </StackPanel>
     </Grid>
 </Window>

@@ -37,15 +37,16 @@ namespace G365FF_HFT_2023241.Logic.Class
 
         public void Create(Ride item)
         {
-            if (item.RID<1)
-            {
-                throw new ArgumentException("Invalid ID");
-            }
-            else
-            {
-                repo.Create(item);
-            }
-            
+            //if (item.RID<1)
+            //{
+            //    throw new ArgumentException("Invalid ID");
+            //}
+            //else
+            //{
+               
+            //}
+            repo.Create(item);
+
         }
 
         public void Delete(int id)

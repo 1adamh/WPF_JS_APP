@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
@@ -13,6 +14,10 @@ using System.Windows.Input;
 
 namespace G365FF_HFT_2023241.WpfClient
 {
+    public class AvgPassByDriver : ObservableObject
+    {
+        public double eredmeny5 { get; set; }
+    }
     public class PassengerWindowViewModel: ObservableRecipient
     {
         private string errorMessage;
@@ -23,10 +28,9 @@ namespace G365FF_HFT_2023241.WpfClient
             set { SetProperty(ref errorMessage, value); }
         }
         public RestCollection<Passenger> Passengers { get; set; }
-        //public PassengerWindowViewModel()
-        //{
-        //    Passengers = new RestCollection<Passenger>("http://localhost:12932", "passenger");
-        //}
+        public RestService PassNonCrud { get; set; }
+        public ObservableCollection<AvgPassByDriver> AvgPassByDrivers { get; set; }
+        
         private Passenger selectedPassenger;
 
         public Passenger SelectedPassenger
@@ -36,7 +40,7 @@ namespace G365FF_HFT_2023241.WpfClient
             {
                 if (value != null)
                 {
-                    SelectedPassenger = new Passenger()
+                    selectedPassenger = new Passenger()
                     {
                         Name = value.Name,
                         PID = value.PID
@@ -59,11 +63,17 @@ namespace G365FF_HFT_2023241.WpfClient
         public ICommand DeletePassengerCommand { get; set; }
 
         public ICommand UpdatePassengerCommand { get; set; }
+        public ICommand AvgPassByDriverCommand {  get; set; }
+
         public PassengerWindowViewModel()
         {
             if (!IsInDesignMode)
             {
-                Passengers = new RestCollection<Passenger>("http://localhost:12932", "passenger");
+                Passengers = new RestCollection<Passenger>("http://localhost:12932/", "passenger");
+                PassNonCrud= new RestService("http://localhost:12932/");
+                AvgPassByDrivers = new ObservableCollection<AvgPassByDriver>();
+
+                
                 CreatePassengerCommand = new RelayCommand(() =>
                 {
                     Passengers.Add(new Passenger()
@@ -94,6 +104,22 @@ namespace G365FF_HFT_2023241.WpfClient
                     return SelectedPassenger != null;
                 });
                 SelectedPassenger = new Passenger();
+
+
+                AvgPassByDriverCommand = new RelayCommand(
+                    () =>
+                    {
+                        var e = PassNonCrud.Get<double>("PassengerStat/AvgPassByDriver");
+                        foreach (var item in e)
+                        {
+                            AvgPassByDriver pass = new AvgPassByDriver();
+                            pass.eredmeny5 = item;
+                            AvgPassByDrivers.Add(pass);
+                        }
+                    }
+                    );
+
+                
             }
         }
     }
