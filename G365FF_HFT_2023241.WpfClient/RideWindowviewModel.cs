@@ -93,7 +93,7 @@ namespace G365FF_HFT_2023241.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Rides = new RestCollection<Ride>("http://localhost:12932/", "ride");
+                Rides = new RestCollection<Ride>("http://localhost:12932/", "ride", "hub");
                 RideNoncrud = new RestService("http://localhost:12932/");
                 AverageDrivers = new ObservableCollection<AvgDistanceByDriver>();
                 AverageDistancePassenger = new ObservableCollection<AvgDistanceByPassenger>();

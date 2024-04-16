@@ -4,6 +4,7 @@ using G365FF_HFT_2023241.Models;
 using G365FF_HFT_2023241.Repository.Class;
 using G365FF_HFT_2023241.Repository.Data;
 using G365FF_HFT_2023241.Repository.Interface;
+using G365FF_HFT_2023241_Endpoint.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +42,8 @@ namespace G365FF_HFT_2023241_Endpoint
             services.AddTransient<IRideLogic,RideLogic>();
             services.AddTransient<ITaxiLogic, TaxiLogic>();
             services.AddTransient<IPassengerLogic, PassengerLogic>();
+
+            services.AddSignalR();
                 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -66,6 +69,7 @@ namespace G365FF_HFT_2023241_Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

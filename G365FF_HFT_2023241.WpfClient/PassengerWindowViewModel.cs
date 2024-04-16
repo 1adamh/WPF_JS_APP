@@ -69,7 +69,7 @@ namespace G365FF_HFT_2023241.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Passengers = new RestCollection<Passenger>("http://localhost:12932/", "passenger");
+                Passengers = new RestCollection<Passenger>("http://localhost:12932/", "passenger", "hub");
                 PassNonCrud= new RestService("http://localhost:12932/");
                 AvgPassByDrivers = new ObservableCollection<AvgPassByDriver>();
 

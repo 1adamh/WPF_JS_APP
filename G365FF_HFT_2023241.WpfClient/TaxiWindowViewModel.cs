@@ -60,7 +60,7 @@ namespace G365FF_HFT_2023241.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Taxis = new RestCollection<Taxi>("http://localhost:12932/", "taxi");
+                Taxis = new RestCollection<Taxi>("http://localhost:12932/", "taxi", "hub");
                 //http://localhost:12932/
                 CreateTaxiCommand = new RelayCommand(() =>
                 {
