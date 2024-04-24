@@ -24,7 +24,7 @@ namespace G365FF_HFT_2023241.Logic.Class
 
         public void Create(Passenger item)
         {
-            if (item.Name.Length>100)
+            if (item.Name.Length > 100)
             {
                 throw new ArgumentException("Name is too long.");
             }
@@ -33,6 +33,8 @@ namespace G365FF_HFT_2023241.Logic.Class
                 prepo.Create(item);
             }
             
+
+
         }
 
         public void Delete(int id)

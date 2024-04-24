@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PassengerUI</title>
+    <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <h1>Passenger Catalog</h1>
+    <div id="formdiv">
+        <label>Passenger Name</label>
+        <input type="text" id="passengername" />
+        <button type="button" onclick="create()">Add Passenger</button>
+    </div>
+    <table>
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea"></tbody>
+    </table>
+
+    <script src="Script.js"></script>
+</body>
+</html>

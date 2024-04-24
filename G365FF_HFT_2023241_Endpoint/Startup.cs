@@ -61,6 +61,12 @@ namespace G365FF_HFT_2023241_Endpoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "G365FF_HFT_2023241_Endpoint v1"));
             }
+            //http://localhost:55196
+            app.UseCors(x => x
+               .AllowCredentials()
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .WithOrigins("http://localhost:55196"));
 
             app.UseRouting();
 
