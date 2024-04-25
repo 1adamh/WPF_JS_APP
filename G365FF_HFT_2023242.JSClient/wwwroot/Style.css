@@ -1,8 +1,5 @@
-﻿
-    table
-
-{
-    width: 50%;
+﻿table {
+    width: 100%;
 }
 
 table, th, td {
@@ -20,6 +17,7 @@ th, td {
 th {
     background-color: lightblue;
 }
+
 #formdiv {
     display: flex;
     flex-direction: column;
@@ -34,6 +32,7 @@ th {
     #formdiv label {
         font-weight: bolder;
     }
+
 table button {
     padding: 2px;
 }

@@ -25,36 +25,12 @@ function display() {
     document.getElementById('resultarea').innerHTML = "";
     passengers.forEach(t => {
         document.getElementById('resultarea').innerHTML += "<tr><td>" + t.pid + "</td><td>"
-            + t.name + "<td><td>" + `<button type="button" onclick= remove(${t.pid})>Delete</button>` +"</td><td>" ;
+            + t.name + "<td><td>" + `<button type="button" onclick="remove(${t.pid})>Delete</button>` +"</td><td>" ;
             
         //console.log(t.Name)
     })
 }
-//function create() {
-//    let name = document.getElementById('passengername').value;
-//    console.log(name);
-//    let vmi = JSON.stringify(
-//        {
-//            Name: name,
 
-//        });
-//    console.log(vmi);
-//    fetch('http://localhost:12932/passenger', {
-//        method: 'POST',
-//        headers: {
-//            'Content-Type': 'application/json',
-//        },
-//        body: vmi,
-//    })
-//        .then(response => response)
-//        .then(data => {
-//            console.log('Success:', data);
-//            getdata();
-//        })
-//        .catch((error) => {
-//            console.error('Error:', error);
-//        });   
-//}
 
 
 function create() {

@@ -1,16 +1,26 @@
 ﻿let taxis = [];
-fetch('http://localhost:12932/taxi')
-    .then(x => x.json())
-    .then(y => {
-        taxis = y;
-        console.log(taxis);
-        display();
-    });
+getdatataxi();
+//fetch('http://localhost:12932/taxi')
+//    .then(x => x.json())
+//    .then(y => {
+//        taxis = y;
+//        console.log(taxis);
+//        display();
+//    });
+async function getdatataxi() {
+    await fetch('http://localhost:12932/taxi')
+        .then(x => x.json())
+        .then(y => {
+            taxis = y;
+            console.log(taxis);
+            displaytaxi();
+        });
+}
 
-function display() {
+function displaytaxi() {
     taxis.forEach(t => {
         document.getElementById('resultarea').innerHTML += "<tr><td>" + t.tid + "</td><td>"
-            + t.name + "</td><td>" ;
+            + t.name + "<td><td>" + `<button type="button" onclick="remove(${t.tid})>Delete</button>` + "</td><td>";
 
         //console.log(t.Name)
     })
@@ -27,7 +37,7 @@ function createtaxi() {
         .then(response => response)
         .then(data => {
             console.log('Success:', data);
-            getdata();
+            getdatataxi();
         })
         .catch((error) => { console.error('Error:', error); });
 
